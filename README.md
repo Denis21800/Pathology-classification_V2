@@ -1,34 +1,35 @@
-# Pathology-classification_V2
 
-This pipeline can only be used with the Mongo DB installed. Follow the instructions to install Mongo DB:
-https://docs.mongodb.com/manual/installation/
+Full description is given in the file https://github.com/Denis21800/Pathology-classification_V2/blob/main/readme/readme.pdf
+
+
+This pipeline can only be used with the Mongo DB installed. Follow the instructions to install Mongo DB https://docs.mongodb.com/manual/installation/
 The config.json file is used to configure the data loading, training and validation processes.
-1. Configure db connectionMongo DB is used to load and store data extracted from mgf files. To set up the database configuration,
-  set the value "db_type": "mongo" in the config.json file and fill in the connection parameters block:
-  "db_type": "mongo"
-  "mongo_params": {
-  "host": "localhost",
-  "port": 27017,
-  "db_name": "cancer_data",
-  "col_name": "data_col"
-  },
+1. Configure db connectionMongo DB is used to load and store data extracted from mgf files. 
+  To set up the database configuration, set the value "db_type": "mongo" in the config.json file and fill in the connection parameters block:
+    "db_type": "mongo"
+    "mongo_params": {
+    "host": "localhost",
+    "port": 27017,
+    "db_name": "cancer_data",
+    "col_name": "data_col"
+    },
 2. Initial loading
   For the initial loading of data into, place the mgf files in folders corresponding to the name of the class
   (pathology) and specify the path to the root folder in the parameters
-  "load from folder": {
-  "data folder": <Path to data>,
-  "validation": 20
-  }
+    "load from folder": {
+    "data folder": <Path to data>,
+    "validation": 20
+    }
 
   Specify the number of files for each class that will be allocated for model validation.
   Specify the label of data for each class:
-  "labels": {
-  "0": "Control",
-  "1": "Ovarian Cancer",
-  "2": "Prostate Cancer",
-  "3": "Kidney Cancer",
-  "4": "Schizophrenia"
-  },
+    "labels": {
+    "0": "Control",
+    "1": "Ovarian Cancer",
+    "2": "Prostate Cancer",
+    "3": "Kidney Cancer",
+    "4": "Schizophrenia"
+    },
   Define parameters for data preprocessing:
   "preprocessing": {
   "elliptic": true,
@@ -61,7 +62,7 @@ The config.json file is used to configure the data loading, training and validat
   To launch tensorboard and view the metrics, run the command:
     $tensorboard --logdir runs
   
-  4. Validate model
+4. Validate model
   To start the model validation mode, set the value of the pipeline_steps parameter
   "pipeline steps": ["load from db", "validate"]
   Execute the code contained in script core_app.py

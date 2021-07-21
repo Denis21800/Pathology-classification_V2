@@ -16,7 +16,7 @@ class ModelProcessor(object):
         self.train_loader = train_loader
         self.test_loader = test_loader
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-        self.model_optimizer = Adam(self.model.parameters(), lr=1e-5)
+        self.model_optimizer = Adam(self.model.parameters(), lr=1e-4)
         self.model = model.float()
         self.model.to(self.device)
         self.loss_fn = nn.CrossEntropyLoss()

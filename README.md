@@ -13,7 +13,7 @@ The config.json file is used to configure the data loading, training and validat
       "db_name": "cancer_data",
       "col_name": "data_col"
       },
-2. Initial loading
+2.
     For the initial loading of data into, place the mgf files in folders corresponding to the name of the class
     (pathology) and specify the path to the root folder in the parameters
       "load from folder": {
@@ -51,7 +51,7 @@ The config.json file is used to configure the data loading, training and validat
     The results of the data loading and transformation process will be displayed in the console
     You can also check the upload results directly in Mongo database.
   
-3. Train model
+3.
     To start the model training mode, set the value of the pipeline_steps parameter
       "pipeline steps": ["load from db", "train"]
     Execute the code contained in script core_app.py
@@ -62,7 +62,7 @@ The config.json file is used to configure the data loading, training and validat
     To launch tensorboard and view the metrics, run the command:
       $tensorboard --logdir runs
   
-4. Validate model
+4. 
     To start the model validation mode, set the value of the pipeline_steps parameter
     "pipeline steps": ["load from db", "validate"]
     Execute the code contained in script core_app.py

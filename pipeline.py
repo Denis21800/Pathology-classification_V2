@@ -3,7 +3,6 @@ from config import PipelineConfig
 from mgf_parser import MGFParser
 from db_manager import MongoDBManager
 from datasets import ModelData
-from resnet_model import ResNet1D
 from resnet_model import multi_scale
 from process_models import ModelProcessor
 from metrics import Evaluator
@@ -158,16 +157,7 @@ class PipelineProcessor(object):
                                       )
 
             if self.config.model_type == 'Resnet':
-                model = multi_scale()  # MSResNet(input_channel=2, layers=[1, 1, 1, 1], num_classes=6)
-                # model = ResNet1D(
-                #     in_channels=2,
-                #     base_filters=64,
-                #     kernel_size=4,
-                #     stride=2,
-                #     groups=1,
-                #     n_classes=len(self.config.labels),
-                #     n_block=4
-                # )
+                model = multi_scale()
             assert model
             if self.config.save_output and self.config.output_dir and self.config.use_cam:
                 assert self.config.cam_layer
